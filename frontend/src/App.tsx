@@ -1,34 +1,36 @@
 import { Box } from "@mui/material";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { TestData } from "./components/TestData";
+// import { ProtectedTestData } from "./components/ProtectedTestData";
+import { AuthProvider } from "./context/AuthContext";
+import { ProtectedRoute } from "./components/Auth/ProtectedRoute";
+import { Login } from "./components/Auth/Login";
+import { Navigation } from "./components/Navigation";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Box sx={{ p: 3 }}>
-        {/* Basic navigation */}
-        <Box sx={{ mb: 3 }}>
-          <Link to="/" style={{ marginRight: "1rem" }}>
-            Home
-          </Link>
-          <Link to="/test">Test Data</Link>
+    <AuthProvider>
+      <BrowserRouter>
+        <Box>
+          <Navigation />
+          <Box sx={{ p: 3 }}>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/test" element={<TestData />} />
+              <Route
+                path="/protected"
+                element={
+                  <ProtectedRoute>
+                    <></>
+                  </ProtectedRoute>
+                }
+              />
+              {/* Other routes... */}
+            </Routes>
+          </Box>
         </Box>
-
-        {/* Routes */}
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Box>
-                <h1>Welcome to the Home Page</h1>
-                <p>Use the navigation above to explore the app</p>
-              </Box>
-            }
-          />
-          <Route path="/test" element={<TestData />} />
-        </Routes>
-      </Box>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
