@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 import { selectAllCountries } from "../../store/slices/countriesSlice";
+import { Button, Typography } from "@mui/material";
 
 const CountryCard = () => {
   const countries = useAppSelector(selectAllCountries);
@@ -22,8 +23,12 @@ const CountryCard = () => {
               <h3>{country.name.common}</h3>
               <p>{country.region}</p>
               <p>{country.capital}</p>
-              <p>{country.population}</p>
-              <button onClick={handleCountryClick}>See More</button>
+              <Typography>{country.population}</Typography>
+              <Button 
+                onClick={handleCountryClick}
+              >
+                See More
+              </Button>
             </div>
             ))
           }

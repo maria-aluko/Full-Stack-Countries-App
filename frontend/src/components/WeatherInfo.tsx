@@ -10,3 +10,5 @@ const WeatherInfo = ({weather}: {weather: WeatherData}) => {
     <div>Some weather info</div>
   )
 }
+
+export default WeatherInfo;
