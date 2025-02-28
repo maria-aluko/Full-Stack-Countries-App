@@ -7,6 +7,8 @@ import { Navigation } from "./components/Navigation";
 import ProtectedTestData from "./components/ProtectedTestData";
 import { TestData } from "./components/TestData";
 import { AuthProvider } from "./context/AuthContext";
+import CountriesList from "./components/Countries/CountriesList";
+import CountryDetail from "./components/Countries/CountryDetail";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
                 }
               />
               <Route path="/" element={<div>Home is here</div>} />
+              <Route path="/countries" element={<CountriesList />} />
+              <Route path="/countries/:name" element={<CountryDetail />} />
               {/* Other routes... */}
             </Routes>
           </Box>
