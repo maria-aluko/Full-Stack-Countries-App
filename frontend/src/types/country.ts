@@ -24,6 +24,7 @@ export interface Country {
   flags: CountryFlags;
   cca3: string;
   currencies?: Record<string, Currency>;
+  latlng: [number, number];
 }
 
 export interface CountryState {

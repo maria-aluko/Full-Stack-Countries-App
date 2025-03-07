@@ -1,42 +1,42 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useAppSelector } from "../../store/hooks";
-import { selectAllCountries } from "../../store/slices/countriesSlice";
-import { Button, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Button, Card, CardMedia, Typography } from "@mui/material";
+import { Country } from '../../types/country';
 
-const CountryCard = () => {
-  const countries = useAppSelector(selectAllCountries);
+interface CountryCardProps {
+  country: Country;
+}
+
+const CountryCard = ({ country }: CountryCardProps) => {
   const navigate = useNavigate();
-  const {name} = useParams();
-  const selectedCountry = countries.find((country) => country.name.common.toLowerCase() === decodeURIComponent( name || '').toLowerCase());
-
-  const handleCountryClick = () => {
-    navigate(`/countries/:${selectedCountry?.name.common}`);
+  const handleCountryClick = (countryName: string) => {
+    navigate(`/countries/${countryName}`);
   }
 
   return (
     <div>
-      <ul>
-        <li>
-          {countries.map((country) => (
-            <div className="country-card">
-              <img src={country.flags.png} alt={country.name.common} />
-              <h3>{country.name.common}</h3>
-              <p>{country.region}</p>
-              <p>{country.capital}</p>
-              <Typography>{country.population}</Typography>
-              <Button 
-                onClick={handleCountryClick}
-              >
-                See More
-              </Button>
-            </div>
-            ))
-          }
-        </li>
-      </ul>
-      
-    </div>
-  )
+      <Card key={country.cca3} sx={{ width: 300, margin: 1 }}>
+        <CardMedia
+          component="img"
+          image={country.flags.png}
+          alt={country.name.common}
+          height={180}
+        />
+        <Typography variant="h6" component="h2" align="center">
+          {country.name.common}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" align="center">
+          {country.region}
+        </Typography>
+        <Button
+          onClick={() => handleCountryClick(country.name.common)}
+          sx={{ marginTop: 2 }}
+          color="primary"
+        >
+          See More
+        </Button>
+      </Card>
+  </div>
+  );
 }
 
 export default CountryCard;
