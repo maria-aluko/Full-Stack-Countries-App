@@ -10,6 +10,7 @@ import { AuthProvider } from "./context/AuthContext";
 import CountriesList from "./components/Countries/CountriesList";
 import CountryDetail from "./components/Countries/CountryDetail";
 import Favorites from "./components/Favorites";
+import HomePage from "./components/HomePage";
 
 function App() {
   return (
@@ -45,7 +46,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/" element={<div>Home is here</div>} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/countries" element={<CountriesList />} />
               <Route path="/countries/:name" element={<CountryDetail />} />
               <Route path="/favorites" element={<Favorites />} />

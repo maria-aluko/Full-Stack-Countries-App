@@ -4,7 +4,7 @@ import { CountryFavorite } from "../types/favorite";
 import { useAppSelector } from "../store/hooks";
 import { selectAllCountries } from "../store/slices/countriesSlice";
 import { favoritesApi } from "../api/services/favorites";
-import { Alert, Box, CircularProgress, Grid, Grid2, Typography } from "@mui/material";
+import { Alert, Box, CircularProgress, Grid, Typography } from "@mui/material";
 import CountryCard from "./Countries/CountryCard";
 
 const Favorites = () => {
