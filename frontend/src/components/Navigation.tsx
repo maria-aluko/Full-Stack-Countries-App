@@ -18,6 +18,9 @@ export const Navigation = () => {
         <Button color="inherit" component={RouterLink} to="/countries">
           Countries
         </Button>
+        <Button color="inherit" component={RouterLink} to="/favorites">
+          Favorites
+        </Button>
         <Button
           color="inherit"
           component={RouterLink}

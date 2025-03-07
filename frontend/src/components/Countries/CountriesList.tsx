@@ -16,15 +16,18 @@ useEffect(() => {
   }, [dispatch]);
 
   return (
-    <Box sx={{ 
-      p: 1, 
-      display: 'grid', 
-      gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', 
-      gap: 5 
-    }}>
-      {countries.map((country) => (
-                <CountryCard key={country.name.common} country={country} />
-            ))}
+    <Box>
+      <input type="text" placeholder="Search for a country..." />
+      <Box sx={{ 
+        p: 1, 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', 
+        gap: 5 
+      }}>
+        {countries.map((country) => (
+                  <CountryCard key={country.name.common} country={country} />
+              ))}
+      </Box>
     </Box>
   );
 }

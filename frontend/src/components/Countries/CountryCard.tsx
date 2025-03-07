@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { Button, Card, CardMedia, Typography } from "@mui/material";
+import { Box, Button, Card, CardMedia, Typography } from "@mui/material";
 import { Country } from '../../types/country';
+import FavoriteButton from "../FavoriteButton";
 
 interface CountryCardProps {
   country: Country;
@@ -13,7 +14,7 @@ const CountryCard = ({ country }: CountryCardProps) => {
   }
 
   return (
-    <div>
+    <div>      
       <Card key={country.cca3} sx={{ width: 300, margin: 1 }}>
         <CardMedia
           component="img"
@@ -27,13 +28,16 @@ const CountryCard = ({ country }: CountryCardProps) => {
         <Typography variant="body2" color="textSecondary" align="center">
           {country.region}
         </Typography>
-        <Button
-          onClick={() => handleCountryClick(country.name.common)}
-          sx={{ marginTop: 2 }}
-          color="primary"
-        >
-          See More
-        </Button>
+        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: 1 }}>
+          <Button
+            onClick={() => handleCountryClick(country.name.common)}
+            sx={{ marginTop: 2 }}
+            color="primary"
+          >
+            See More
+          </Button>
+          <FavoriteButton country={country} />
+        </Box>
       </Card>
   </div>
   );

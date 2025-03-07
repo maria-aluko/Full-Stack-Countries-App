@@ -9,6 +9,7 @@ import { TestData } from "./components/TestData";
 import { AuthProvider } from "./context/AuthContext";
 import CountriesList from "./components/Countries/CountriesList";
 import CountryDetail from "./components/Countries/CountryDetail";
+import Favorites from "./components/Favorites";
 
 function App() {
   return (
@@ -36,9 +37,18 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route
+                path="/favorites"
+                element={
+                  <ProtectedRoute>
+                    <Favorites />
+                  </ProtectedRoute>
+                }
+              />
               <Route path="/" element={<div>Home is here</div>} />
               <Route path="/countries" element={<CountriesList />} />
               <Route path="/countries/:name" element={<CountryDetail />} />
+              <Route path="/favorites" element={<Favorites />} />
               {/* Other routes... */}
             </Routes>
           </Box>

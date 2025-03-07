@@ -1,7 +1,7 @@
 export interface CountryName {
   common: string;
-  offical: string;
-  nativeName: Record<string, {official: string, common: string}>;
+  offical?: string;
+  nativeName?: Record<string, {official: string, common: string}>;
 }
 
 export interface CountryFlags {
@@ -24,7 +24,7 @@ export interface Country {
   flags: CountryFlags;
   cca3: string;
   currencies?: Record<string, Currency>;
-  latlng: [number, number];
+  latlng?: [number, number];
 }
 
 export interface CountryState {
