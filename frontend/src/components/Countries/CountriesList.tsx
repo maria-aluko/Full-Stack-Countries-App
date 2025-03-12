@@ -13,6 +13,8 @@ const CountriesList = () => {
   const loading = useAppSelector(selectLoading);
   const [region, setRegion] = useState('');
   const [sortOrder, setSortOrder] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
 
   useEffect(() => {
       dispatch(fetchAllCountries());
@@ -33,6 +35,7 @@ const CountriesList = () => {
     }
 
     setFilteredCountries(filtered);
+    setCurrentPage(1);
   }, [searchTerm, region, sortOrder, countries]);
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -50,6 +53,14 @@ const CountriesList = () => {
   };
 
   const showClearButton = searchTerm || region || sortOrder;
+
+  const indexOfLastCountry = currentPage * itemsPerPage;
+  const indexOfFirstCountry = indexOfLastCountry - itemsPerPage;
+  const currentCountries = filteredCountries.slice(indexOfFirstCountry, indexOfLastCountry);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const totalPages = Math.ceil(filteredCountries.length / itemsPerPage);
 
   return (
     <Box>
@@ -131,19 +142,40 @@ const CountriesList = () => {
             maxWdith: '1200px', 
             margin: '0 auto', 
             overflow: 'hidden' }}>
-          {filteredCountries.length === 0 ? (<Typography
+          {currentCountries.length === 0 ? (<Typography
               variant="h6"
               component="p" 
               align="center"
             >
               No countries found
             </Typography>
-           ) : ( filteredCountries.map((country) => (
+           ) : ( currentCountries.map((country) => (
                 <CountryCard key={country.name.common} country={country} />
               ))
           )}
         </Box>
       )}
+
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
+        <Button
+          onClick={() => paginate(currentPage - 1)}
+          disabled={currentPage === 1}
+          sx={{ mr: 2 }}
+        >
+          Previous
+        </Button>
+        <Typography variant="body1">
+          Page {currentPage} of {totalPages}
+        </Typography>
+        <Button
+          onClick={() => paginate(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          sx={{ ml: 2 }}
+        >
+          Next
+        </Button>
+      </Box>
+
     </Box>
   );
 };

@@ -42,10 +42,10 @@ const CountryDetail = () => {
 
   return (
     <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" gap={2}>
-      <Button variant="contained" color="secondary" onClick={() => navigate('/countries')}>
+      <Button variant="contained" color="primary" onClick={() => navigate('/countries')}>
         Go Back
       </Button>
-      <Card sx={{ width: 600 }}>
+      <Card sx={{ width: 600, paddingBottom: 2 }}>
         {loading ? (
           <CircularProgress />
         ) : error ? (
@@ -80,9 +80,9 @@ const CountryDetail = () => {
             }}>
               <PeopleIcon/> Population: {selectedCountry.population.toLocaleString()}
             </Typography>
-            {/* <Typography variant="body1" align="center">
+            <Typography variant="body1" align="center">
               Area: {selectedCountry.area.toLocaleString()} km²
-            </Typography> */}
+            </Typography>
             <Typography variant="body1" align="center">
               Languages: {selectedCountry.languages ? Object.values(selectedCountry.languages).join(", ") : "N/A"}
             </Typography>
@@ -91,17 +91,20 @@ const CountryDetail = () => {
           <Alert severity="warning">Country not found</Alert>
         )}
       </Card>
-      <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" gap={2}>
-        {weatherLoading ? (
-          <CircularProgress />
-        ) : weatherError ? (
-          <Alert severity="error">{weatherError}</Alert>
-        ) : currentWeather ? (
-          <WeatherInfo weather={currentWeather} />
-        ) : (
-          <Alert severity="warning">Weather data unavailable</Alert>
-        )}
-      </Box>
+
+      <Card sx={{ width: 600, paddingBottom: 2 }}>
+        <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" gap={2}>
+          {weatherLoading ? (
+            <CircularProgress />
+          ) : weatherError ? (
+            <Alert severity="error">{weatherError}</Alert>
+          ) : currentWeather ? (
+            <WeatherInfo weather={currentWeather} />
+          ) : (
+            <Alert severity="warning">Weather data unavailable</Alert>
+          )}
+        </Box>
+        </Card>
     </Box>
   );
 }

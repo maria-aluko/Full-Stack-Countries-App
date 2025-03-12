@@ -6,6 +6,8 @@ import { selectAllCountries } from "../store/slices/countriesSlice";
 import { favoritesApi } from "../api/services/favorites";
 import { Alert, Box, CircularProgress, Grid, Typography } from "@mui/material";
 import CountryCard from "./Countries/CountryCard";
+import { useNavigate } from "react-router-dom";
+import { ArrowBack } from "@mui/icons-material";
 
 const Favorites = () => {
   const { user } = useAuth();
@@ -13,6 +15,7 @@ const Favorites = () => {
   const [error, setError] = useState<string | null>(null);
   const [favorites, setFavorites] = useState<CountryFavorite[]>([]);
   const allCountries = useAppSelector(selectAllCountries);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!user) return;
@@ -59,9 +62,8 @@ const convertToCountry = (favorite: CountryFavorite) => {
         symbol: "❤️",
       }
     },
-    languages: {
-      FAV: "Favorite language",
-    },
+    languages: ["Favorite language"],
+    area: 0,
     // add here the parts of data i'm using also in the country card
   };
   
@@ -78,7 +80,19 @@ if(loading) {
 
 return (
   <Box sx={{p:3}}>
-    <Typography variant="h4" gutterBottom>
+    <ArrowBack
+      onClick={() => navigate('/countries')}
+      sx={{
+        color: 'primary',
+        borderRadius: 2,
+        '&:hover': {
+          backgroundColor: 'primary.main', 
+          cursor: 'pointer',
+          color: 'white',
+        }
+      }}  
+    />
+    <Typography variant="h4" textAlign='center' marginBottom='10' gutterBottom>
       My Favorites Countries
     </Typography>
 

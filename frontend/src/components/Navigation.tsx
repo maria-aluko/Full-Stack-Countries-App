@@ -33,18 +33,18 @@ export const Navigation = () => {
           <Button color="inherit" component={RouterLink} to="/countries">
             Countries
           </Button>
-          <Button>
+        
             {user && (
               <Button 
                 component={RouterLink}
                 to="/favorites"
                 startIcon={<Favorite />}
                 sx={{ color: 'white' }}
+                color='inherit'
               >
                 Favorites
               </Button>
             )}
-          </Button>
         </Box>
 
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
