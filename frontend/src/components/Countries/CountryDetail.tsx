@@ -22,6 +22,7 @@ const CountryDetail = () => {
 
   const nameDecoded = decodeURIComponent(name || "").toLowerCase();
   const selectedCountry = countries.find((country) => country.name.common.toLowerCase() === nameDecoded);
+  console.log(selectedCountry);
 
   useEffect(() => {
     if (!selectedCountry) {
@@ -33,9 +34,9 @@ const CountryDetail = () => {
   }, [dispatch, selectedCountry, error]);
 
   useEffect(() => {
-    if (selectedCountry && selectedCountry.latlng) {
-      const coordinates = selectedCountry.latlng;
-      dispatch(fetchWeather(coordinates));
+    if (selectedCountry && selectedCountry.capital && selectedCountry.capital.length > 0) {
+      const capital = selectedCountry.capital[0];
+      dispatch(fetchWeather(capital));
     }
   }, [dispatch, selectedCountry]);
 

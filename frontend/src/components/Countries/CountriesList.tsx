@@ -98,7 +98,17 @@ const CountriesList = () => {
       {loading ? (
         <CircularProgress />
       ) : (
-        <Box sx={{ p: 1, display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: 5 }}>
+        <Box 
+          sx={{ 
+            p: 1, 
+            display: 'grid', 
+            gridTemplateColumns: 
+            'repeat(auto-fill, minmax(250px, 1fr))', 
+            gap: 3, 
+            width: '100%', 
+            maxWdith: '1200px', 
+            margin: '0 auto', 
+            overflow: 'hidden' }}>
           {filteredCountries.length === 0
             ? <Typography
               variant="h6"

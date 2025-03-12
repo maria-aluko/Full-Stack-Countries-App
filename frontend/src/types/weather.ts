@@ -1,6 +1,6 @@
 export interface WeatherData {
   main: WeatherMain;
-  weather: Weather;
+  weather: Weather[];
   wind: Wind;
 }
 
