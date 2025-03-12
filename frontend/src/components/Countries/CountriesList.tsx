@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchAllCountries, selectAllCountries, selectError, selectLoading } from '../../store/slices/countriesSlice';
-import { Box, CircularProgress, InputLabel, MenuItem, Select, SelectChangeEvent, TextField, Typography } from '@mui/material';
+import { fetchAllCountries, selectAllCountries, selectLoading } from '../../store/slices/countriesSlice';
+import { Box, Button, CircularProgress, InputLabel, MenuItem, Select, SelectChangeEvent, TextField, Typography } from '@mui/material';
 import CountryCard from './CountryCard';
 import { Country } from '../../types/country';
 
@@ -27,9 +27,9 @@ const CountriesList = () => {
     });
 
     if (sortOrder === 'ascend') {
-      filtered.sort((a, b) => a.population - b.population); // Ascending order
+      filtered.sort((a, b) => a.population - b.population);
     } else if (sortOrder === 'descend') {
-      filtered.sort((a, b) => b.population - a.population); // Descending order
+      filtered.sort((a, b) => b.population - a.population);
     }
 
     setFilteredCountries(filtered);
@@ -43,24 +43,34 @@ const CountriesList = () => {
     setSortOrder(event.target.value);
   };
 
+  const handleClearFilters = () => {
+    setSearchTerm('');
+    setRegion('');
+    setSortOrder('');
+  };
+
+  const showClearButton = searchTerm || region || sortOrder;
+
   return (
     <Box>
       <Typography variant="h4" component="h1" align="center" sx={{ mb: 2 }}>
         Countries of the World
       </Typography>
 
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2, mb: 3 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
         <TextField
           label="Search by country name"
           variant="outlined"
           margin="normal"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          sx={{ flexGrow: 1 }}
+          sx={{ width: '100%', maxWidth: 500 }}
         />
+      </Box>
         
+      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 3 }}>
         <Box sx={{ width: '200px' }}>
-          <InputLabel id="region-select-label">Region</InputLabel>
+          <InputLabel id="region-select-label">Filter by Region</InputLabel>
           <Select
             labelId="region-select-label"
             id="region-select"
@@ -95,6 +105,18 @@ const CountriesList = () => {
         </Box>
       </Box>
 
+      {showClearButton && (
+        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={handleClearFilters}
+          >
+            Clear Filters
+          </Button>
+        </Box>
+      )}
+
       {loading ? (
         <CircularProgress />
       ) : (
@@ -109,18 +131,17 @@ const CountriesList = () => {
             maxWdith: '1200px', 
             margin: '0 auto', 
             overflow: 'hidden' }}>
-          {filteredCountries.length === 0
-            ? <Typography
+          {filteredCountries.length === 0 ? (<Typography
               variant="h6"
               component="p" 
               align="center"
             >
               No countries found
             </Typography>
-            : filteredCountries.map((country) => (
+           ) : ( filteredCountries.map((country) => (
                 <CountryCard key={country.name.common} country={country} />
               ))
-          }
+          )}
         </Box>
       )}
     </Box>

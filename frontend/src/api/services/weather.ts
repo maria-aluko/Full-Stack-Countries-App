@@ -1,7 +1,7 @@
 import { WeatherData } from "../../types/weather";
 import { api } from "../axios";
 
-const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;;
+const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
 export const weatherApi = {
     getWeather: (city: string): Promise<WeatherData> => 

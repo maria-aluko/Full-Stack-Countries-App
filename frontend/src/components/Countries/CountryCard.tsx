@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Card, CardMedia, Typography } from "@mui/material";
+import { Button, Card, CardMedia, Typography } from "@mui/material";
 import { Country } from '../../types/country';
 import FavoriteButton from "../FavoriteButton";
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import PeopleIcon from '@mui/icons-material/People';
 import { Place } from "@mui/icons-material";
+import { ThemeContext } from "../../theme/themeContext";
+import { useContext } from "react";
 
 interface CountryCardProps {
   country: Country;
@@ -12,12 +14,13 @@ interface CountryCardProps {
 
 const CountryCard = ({ country }: CountryCardProps) => {
   const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext) || { theme: 'light' }; 
   const handleCountryClick = (countryName: string) => {
     navigate(`/countries/${countryName}`);
   }
 
   return (     
-    <Card key={country.cca3} 
+    <Card key={country.cca3}
       sx={{ width: '100%',
         maxWidth: 350,
         margin: 1,
@@ -31,10 +34,15 @@ const CountryCard = ({ country }: CountryCardProps) => {
         image={country.flags.png}
         alt={country.name.common}
         height={180}
+        onClick={() => handleCountryClick(country.name.common)} 
+        sx={{ "&:hover": { cursor: "pointer" } }}
       />
       <Typography variant="h6" component="h2" align="center">
         {country.name.common}
       </Typography>
+
+      <FavoriteButton country={country} />
+
       <Typography variant="body2" color="textSecondary" align="center" style={{
         display: "inline-flex", 
         alignItems: "center", 
@@ -59,16 +67,19 @@ const CountryCard = ({ country }: CountryCardProps) => {
       }}>
         <PeopleIcon />{country.population.toLocaleString()}
       </Typography>
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: 1 }}>
-        <Button
-          onClick={() => handleCountryClick(country.name.common)}
-          sx={{ marginTop: 2 }}
-          color="primary"
-        >
-          See More
-        </Button>
-        <FavoriteButton country={country} />
-      </Box>
+      <Button
+        onClick={() => handleCountryClick(country.name.common)}
+        sx={{ m: 2, width: 200, alignSelf: 'center',
+          backgroundColor: theme === 'light' ? '#1976d2' : '#ff9100',
+          '&:hover': {
+          backgroundColor: theme === 'light' ? '#1565c0' : '#b26500',
+          },
+          cursor: 'pointer', }}
+        color="primary"
+        variant="contained"
+      >
+        See More
+      </Button>
     </Card>
   );
 }

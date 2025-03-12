@@ -1,7 +1,8 @@
-import { Favorite, Lock } from "@mui/icons-material";
+import { Favorite } from "@mui/icons-material";
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import ThemeToggleButton from "./ThemeToggleButton";
 
 export const Navigation = () => {
   const { user, signOut } = useAuth();
@@ -21,16 +22,14 @@ export const Navigation = () => {
               </Typography>
               <Typography
                 variant="h5"
+                fontWeight="600"
                 component="span"
-                sx={{ color: 'orange' }}
+                sx={{ color: '#ff9100' }}
               >
                 QUEST
               </Typography>
             </Box>
           </Button>
-          {/* <Button color="inherit" component={RouterLink} to="/test">
-            Test
-          </Button> */}
           <Button color="inherit" component={RouterLink} to="/countries">
             Countries
           </Button>
@@ -47,15 +46,9 @@ export const Navigation = () => {
             )}
           </Button>
         </Box>
-        {/* <Button
-          color="inherit"
-          component={RouterLink}
-          to="/protected"
-          startIcon={<Lock />}
-        >
-          Protected Data
-        </Button> */}
+
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          
         {user ? (
           <Button color="inherit" onClick={signOut}>
             Logout ({user.email})
@@ -65,6 +58,7 @@ export const Navigation = () => {
             Login
           </Button>
         )}
+        <ThemeToggleButton />
         </Box>
       </Toolbar>
     </AppBar>

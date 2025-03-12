@@ -8,7 +8,7 @@ interface WeatherInfoProps {
 const WeatherInfo = ({weather}: {weather: WeatherData}) => {
   return (
     <Box sx={{ padding: 2 }}>
-      <Typography variant="h6" align="center">Current Weather</Typography>
+      <Typography variant="h6" align="center">Current Weather in the capital</Typography>
       <Typography variant="body1" align="center">
         Temperature: {weather.main.temp}°C
       </Typography>

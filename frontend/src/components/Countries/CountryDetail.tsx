@@ -64,33 +64,44 @@ const CountryDetail = () => {
             <Typography variant="h5" align="center">
               {selectedCountry.region} | {selectedCountry.subregion}
             </Typography>
-            <Typography variant="body1" align="center">
-              <LocationCityIcon/> Capital: {selectedCountry.capital}
+            <Typography variant="body1" align="center" style={{
+              display: "inline-flex", 
+              alignItems: "center", 
+              justifyContent: "center",
+              width: "100%" 
+            }}>
+              <LocationCityIcon/> Capital: {selectedCountry.capital && selectedCountry.capital.join(", ")}
             </Typography>
-            <Typography variant="body1" align="center">
-              <PeopleIcon/>  Population: {selectedCountry.population.toLocaleString()}
+            <Typography variant="body1" align="center" style={{
+              display: "inline-flex", 
+              alignItems: "center", 
+              justifyContent: "center",
+              width: "100%" 
+            }}>
+              <PeopleIcon/> Population: {selectedCountry.population.toLocaleString()}
             </Typography>
             {/* <Typography variant="body1" align="center">
               Area: {selectedCountry.area.toLocaleString()} km²
             </Typography> */}
-            {/* <Typography variant="body1" align="center">
-              Languages: {Object.values(selectedCountry.languages).join(", ")}
-            </Typography> */}
-
-            {weatherLoading ? (
-              <CircularProgress />
-            ) : weatherError ? (
-              <Alert severity="error">{weatherError}</Alert>
-            ) : currentWeather ? (
-              <WeatherInfo weather={currentWeather} />
-            ) : (
-              <Alert severity="warning">Weather data unavailable</Alert>
-            )}
+            <Typography variant="body1" align="center">
+              Languages: {selectedCountry.languages ? Object.values(selectedCountry.languages).join(", ") : "N/A"}
+            </Typography>
           </>
         ) : (
           <Alert severity="warning">Country not found</Alert>
         )}
       </Card>
+      <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" gap={2}>
+        {weatherLoading ? (
+          <CircularProgress />
+        ) : weatherError ? (
+          <Alert severity="error">{weatherError}</Alert>
+        ) : currentWeather ? (
+          <WeatherInfo weather={currentWeather} />
+        ) : (
+          <Alert severity="warning">Weather data unavailable</Alert>
+        )}
+      </Box>
     </Box>
   );
 }
