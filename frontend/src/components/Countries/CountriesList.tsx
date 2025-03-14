@@ -14,7 +14,7 @@ const CountriesList = () => {
   const [region, setRegion] = useState('');
   const [sortOrder, setSortOrder] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(20);
 
   useEffect(() => {
       dispatch(fetchAllCountries());

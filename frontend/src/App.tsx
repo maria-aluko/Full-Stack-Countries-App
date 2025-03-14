@@ -11,6 +11,8 @@ import CountriesList from "./components/Countries/CountriesList";
 import CountryDetail from "./components/Countries/CountryDetail";
 import Favorites from "./components/Favorites";
 import HomePage from "./components/HomePage";
+import AboutPage from "./components/AboutPage";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -50,9 +52,11 @@ function App() {
               <Route path="/countries" element={<CountriesList />} />
               <Route path="/countries/:name" element={<CountryDetail />} />
               <Route path="/favorites" element={<Favorites />} />
+              <Route path="/about" element={<AboutPage />} />
               {/* Other routes... */}
             </Routes>
           </Box>
+          <Footer />
         </Box>
       </BrowserRouter>
     </AuthProvider>
