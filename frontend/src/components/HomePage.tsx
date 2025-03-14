@@ -38,10 +38,10 @@ const HomePage = () => {
                   <Button
                     component={Link}
                     to="/countries"
+                    color="primary"
                     variant="contained"
                     sx={{
                       p: 2,
-                      backgroundColor: 'primary.main',
                       color: 'white',
                       '&:hover': {
                         backgroundColor: 'primary.dark',
