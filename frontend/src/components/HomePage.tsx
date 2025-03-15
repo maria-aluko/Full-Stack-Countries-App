@@ -14,7 +14,7 @@ const HomePage = () => {
     const { theme } = themeContext;
 
   return (
-    <Box sx={{ px: 2, py: 8 }}>
+    <Box sx={{ px: 2, py: 10 }}>
       <Container maxWidth="lg">
         <Grid container spacing={3} alignItems="center">
           

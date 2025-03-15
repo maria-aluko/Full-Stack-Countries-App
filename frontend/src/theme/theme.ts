@@ -73,7 +73,7 @@ export const darkTheme = createTheme({
     secondary: {
       main: '#ff9100',
       light: '#ba68c8',
-      dark: '#7b1fa2',
+      dark: '#272727;',
     },
   },
   typography: {
