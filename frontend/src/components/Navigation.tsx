@@ -58,6 +58,11 @@ export const Navigation = () => {
             Login
           </Button>
         )}
+
+          <Button color="inherit" component={RouterLink} to="/about">
+            About
+          </Button>
+          
         <ThemeToggleButton />
         </Box>
       </Toolbar>

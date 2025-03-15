@@ -21,7 +21,6 @@ const AboutPage = () => {
       </Typography>
       <Typography  margin="0 auto" maxWidth='600px' marginBottom='30px' lineHeight='1.8'>
         CountryQUEST is a platform where you can explore detailed information about countries around the world. The API provides up-to-date data on various aspects such as population, geography, and weather in the capital of each country.
-        Explore the countries of the world through various filtering or in-depth details of individual countries.
 
         For more information about the APIs used in this project, visit: 
           <p></p>
@@ -32,6 +31,9 @@ const AboutPage = () => {
           </a>
       </Typography>
       
+      <Typography  margin="0 auto" maxWidth='600px' marginBottom='30px' lineHeight='1.8'>
+        You can also add countries to your favorites list to keep track of the ones you are most interested in and quickly access them anytime. Please log in to see your favorites.
+      </Typography>
       
       <Button
         component={Link}
@@ -39,11 +41,28 @@ const AboutPage = () => {
         variant="contained"
         sx={{
           p: 2,
+          marginRight: 2,
           backgroundColor: theme === 'light' ? 'primary.main' : 'secondary.main',
           color: 'white',
         }}
       >
         Explore Now <ArrowForwardIcon />
+      </Button>
+      <Button
+        component={Link}
+        to="/login"
+        variant="outlined"
+        sx={{
+          p:2,
+          color: 'text.secondary',
+          borderColor: 'divider',
+          '&:hover': {
+            backgroundColor: 'action.hover',
+            borderColor: 'divider',
+          },
+        }}
+      >
+        Log In
       </Button>
     </Box>
   )

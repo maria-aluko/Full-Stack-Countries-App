@@ -51,7 +51,6 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/countries" element={<CountriesList />} />
               <Route path="/countries/:name" element={<CountryDetail />} />
-              <Route path="/favorites" element={<Favorites />} />
               <Route path="/about" element={<AboutPage />} />
               {/* Other routes... */}
             </Routes>

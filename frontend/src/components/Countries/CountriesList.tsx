@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchAllCountries, selectAllCountries, selectLoading } from '../../store/slices/countriesSlice';
-import { Box, Button, CircularProgress, InputLabel, MenuItem, Select, SelectChangeEvent, TextField, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, InputLabel, MenuItem, Select, SelectChangeEvent, TextField, Typography, Pagination } from '@mui/material';
 import CountryCard from './CountryCard';
 import { Country } from '../../types/country';
 
@@ -17,8 +17,8 @@ const CountriesList = () => {
   const [itemsPerPage] = useState(20);
 
   useEffect(() => {
-      dispatch(fetchAllCountries());
-    }, [dispatch]);
+    dispatch(fetchAllCountries());
+  }, [dispatch]);
 
   useEffect(() => {
     const searchTermLowerCase = searchTerm.toLowerCase();
@@ -58,9 +58,11 @@ const CountriesList = () => {
   const indexOfFirstCountry = indexOfLastCountry - itemsPerPage;
   const currentCountries = filteredCountries.slice(indexOfFirstCountry, indexOfLastCountry);
 
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-
   const totalPages = Math.ceil(filteredCountries.length / itemsPerPage);
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setCurrentPage(value);
+  };
 
   return (
     <Box>
@@ -70,7 +72,7 @@ const CountriesList = () => {
 
       <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3, flexWrap: 'wrap', gap: 2, alignItems: 'center' }}>
         <Box sx={{ width: { xs: '100%', sm: 500 }, maxWidth: 700 }}>
-          <InputLabel htmlFor="search-bar" sx={{ display: 'block'}}>
+          <InputLabel htmlFor="search-bar" sx={{ display: 'block' }}>
             Search
           </InputLabel>
           <TextField
@@ -82,7 +84,7 @@ const CountriesList = () => {
             sx={{ width: '100%' }}
           />
         </Box>
-        
+
         <Box sx={{ width: { xs: '100%', sm: 'auto' }, minWidth: 200 }}>
           <InputLabel id="region-select-label">Filter by Region</InputLabel>
           <Select
@@ -144,44 +146,31 @@ const CountriesList = () => {
             width: '100%', 
             maxWdith: '1200px', 
             margin: '0 auto', 
-            overflow: 'hidden' }}>
-          {currentCountries.length === 0 ? (<Typography
-              variant="h6"
-              component="p" 
-              align="center"
-            >
+            overflow: 'hidden' 
+          }}>
+          {currentCountries.length === 0 ? (
+            <Typography variant="h6" component="p" align="center">
               No countries found
             </Typography>
-           ) : ( currentCountries.map((country) => (
-                <CountryCard key={country.name.common} country={country} />
-              ))
+          ) : (
+            currentCountries.map((country) => (
+              <CountryCard key={country.name.common} country={country} />
+            ))
           )}
         </Box>
       )}
 
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
-        <Button
-          onClick={() => paginate(currentPage - 1)}
-          disabled={currentPage === 1}
-          sx={{ mr: 2 }}
-        >
-          Previous
-        </Button>
-        <Typography variant="body1">
-          Page {currentPage} of {totalPages}
-        </Typography>
-        <Button
-          onClick={() => paginate(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          sx={{ ml: 2 }}
-        >
-          Next
-        </Button>
+        <Pagination
+          count={totalPages}
+          page={currentPage}
+          onChange={handlePageChange}
+          variant="outlined"
+          shape="rounded"
+        />
       </Box>
-
     </Box>
   );
 };
-
 
 export default CountriesList;
