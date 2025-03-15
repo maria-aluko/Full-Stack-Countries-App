@@ -18,9 +18,9 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Box>
+        <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
           <Navigation />
-          <Box sx={{ p: 3 }}>
+          <Box sx={{ flexGrow: 1, p: 3 }}>
             <Routes>
               <Route
                 path="/login"
