@@ -1,12 +1,13 @@
 import { useParams, useNavigate } from "react-router-dom"; 
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { fetchAllCountries, selectAllCountries, selectError, selectLoading } from "../../store/slices/countriesSlice";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Box, Card, CardMedia, Typography, CircularProgress, Alert, Button } from "@mui/material";
 import { fetchWeather, selectWeather, selectWeatherLoading, selectWeatherError } from "../../store/slices/weatherSlice";
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import PeopleIcon from '@mui/icons-material/People';
 import WeatherInfo from "../WeatherInfo";
+import { ThemeContext } from "../../theme/themeContext";
 
 const CountryDetail = () => {
   const {name} = useParams();
@@ -23,6 +24,14 @@ const CountryDetail = () => {
   const nameDecoded = decodeURIComponent(name || "").toLowerCase();
   const selectedCountry = countries.find((country) => country.name.common.toLowerCase() === nameDecoded);
   console.log(selectedCountry);
+
+  const themeContext = useContext(ThemeContext);
+    
+      if (!themeContext) {
+        throw new Error('ThemeContext is not provided');
+      }
+    
+      const { theme } = themeContext;
 
   useEffect(() => {
     if (!selectedCountry) {
@@ -42,7 +51,7 @@ const CountryDetail = () => {
 
   return (
     <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" gap={2}>
-      <Button variant="contained" color="primary" onClick={() => navigate('/countries')}>
+      <Button sx={{backgroundColor: theme === 'light' ? 'primary.main' : 'secondary.main'}} variant="contained" color="primary" onClick={() => navigate('/countries')}>
         Go Back
       </Button>
       <Card sx={{ width: 600, paddingBottom: 2 }}>

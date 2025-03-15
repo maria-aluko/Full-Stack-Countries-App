@@ -30,7 +30,7 @@ const HomePage = () => {
               <Typography
                 variant="h3"
                 component="span"
-                sx={{ display: 'block', color: 'primary.main', lineHeight: 1.2 }}
+                sx={{ display: 'block', color: theme === 'light' ? 'primary.main' : 'secondary.main', lineHeight: 1.2 }}
               >
                 Real-Time Data
               </Typography>

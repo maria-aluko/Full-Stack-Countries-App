@@ -12,7 +12,7 @@ const Footer = () => {
   const { theme } = themeContext;
 
   return (
-      <Toolbar sx={{ display: 'flex', justifyContent: 'center', backgroundColor: theme === 'light' ? 'primary.main' : 'secondary.main', color:'white' }}>
+      <Toolbar sx={{ display: 'flex', justifyContent: 'center', backgroundColor: theme === 'light' ? 'primary.main' : 'secondary.main', color:'white', height: '20px' }}>
         <Typography sx={{ fontSize: '0.8rem' }}>
           &#169; Maria Aluko 2025
         </Typography>
