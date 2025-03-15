@@ -68,19 +68,22 @@ const CountriesList = () => {
         Countries of the World
       </Typography>
 
-      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
-        <TextField
-          label="Search by country name"
-          variant="outlined"
-          margin="normal"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          sx={{ width: '100%', maxWidth: 500 }}
-        />
-      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3, flexWrap: 'wrap', gap: 2, alignItems: 'center' }}>
+        <Box sx={{ width: { xs: '100%', sm: 500 }, maxWidth: 700 }}>
+          <InputLabel htmlFor="search-bar" sx={{ display: 'block'}}>
+            Search
+          </InputLabel>
+          <TextField
+            label="Search by country name"
+            id="search-bar"
+            variant="outlined"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            sx={{ width: '100%' }}
+          />
+        </Box>
         
-      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 3 }}>
-        <Box sx={{ width: '200px' }}>
+        <Box sx={{ width: { xs: '100%', sm: 'auto' }, minWidth: 200 }}>
           <InputLabel id="region-select-label">Filter by Region</InputLabel>
           <Select
             labelId="region-select-label"
@@ -99,7 +102,7 @@ const CountriesList = () => {
           </Select>
         </Box>
 
-        <Box sx={{ width: '200px' }}>
+        <Box sx={{ width: { xs: '100%', sm: 'auto' }, minWidth: 200 }}>
           <InputLabel id="population-sort-label">Sort by Population</InputLabel>
           <Select
             labelId="population-sort-label"

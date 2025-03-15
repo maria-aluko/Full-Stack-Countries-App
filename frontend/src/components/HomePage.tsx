@@ -1,8 +1,18 @@
 import { Box, Button, CardMedia, Container, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useContext } from "react";
+import { ThemeContext } from "../theme/themeContext";
 
 const HomePage = () => {
+  const themeContext = useContext(ThemeContext);
+  
+    if (!themeContext) {
+      throw new Error('ThemeContext is not provided');
+    }
+  
+    const { theme } = themeContext;
+
   return (
     <Box sx={{ px: 2, py: 8 }}>
       <Container maxWidth="lg">
@@ -42,10 +52,8 @@ const HomePage = () => {
                     variant="contained"
                     sx={{
                       p: 2,
+                      backgroundColor: theme === 'light' ? 'primary.main' : 'secondary.main',
                       color: 'white',
-                      '&:hover': {
-                        backgroundColor: 'primary.dark',
-                      },
                     }}
                   >
                     Explore Now <ArrowForwardIcon />
