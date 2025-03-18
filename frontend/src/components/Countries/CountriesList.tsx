@@ -125,7 +125,7 @@ const CountriesList = () => {
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
           <Button
             variant="outlined"
-            color="secondary"
+            color="primary"
             onClick={handleClearFilters}
           >
             Clear Filters

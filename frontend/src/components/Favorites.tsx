@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { CountryFavorite } from "../types/favorite";
 import { useAppSelector } from "../store/hooks";
 import { selectAllCountries } from "../store/slices/countriesSlice";
 import { favoritesApi } from "../api/services/favorites";
-import { Alert, Box, CircularProgress, Grid, Typography } from "@mui/material";
+import { Alert, Box, Button, CircularProgress, Grid, Typography } from "@mui/material";
 import CountryCard from "./Countries/CountryCard";
 import { useNavigate } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
@@ -80,18 +80,13 @@ if(loading) {
 
 return (
   <Box sx={{p:3}}>
-    <ArrowBack
+    <Button
+      color="primary"
+      variant="contained"
       onClick={() => navigate('/countries')}
-      sx={{
-        color: 'primary',
-        borderRadius: 2,
-        '&:hover': {
-          backgroundColor: 'primary.main', 
-          cursor: 'pointer',
-          color: 'white',
-        }
-      }}  
-    />
+    >
+      <ArrowBack/> All Countries
+    </Button>
     <Typography variant="h4" textAlign='center' marginBottom='10' gutterBottom>
       My Favorites Countries
     </Typography>
