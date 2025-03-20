@@ -33,6 +33,9 @@ export const Navigation = () => {
           <Button color="inherit" component={RouterLink} to="/countries">
             Countries
           </Button>
+          <Button color="inherit" component={RouterLink} to="/visited">
+            Visited
+          </Button>
         
             {user && (
               <Button 
