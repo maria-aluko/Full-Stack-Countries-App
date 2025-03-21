@@ -7,6 +7,8 @@ import { fetchWeather, selectWeather, selectWeatherLoading, selectWeatherError }
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import PeopleIcon from '@mui/icons-material/People';
 import WeatherInfo from "../WeatherInfo";
+import TranslateIcon from '@mui/icons-material/Translate';
+import CropFreeIcon from '@mui/icons-material/CropFree';
 import { ThemeContext } from "../../theme/themeContext";
 
 const CountryDetail = () => {
@@ -77,9 +79,9 @@ const CountryDetail = () => {
               display: "inline-flex", 
               alignItems: "center", 
               justifyContent: "center",
-              width: "100%" 
+              width: "100%"
             }}>
-              <LocationCityIcon/> Capital: {selectedCountry.capital && selectedCountry.capital.join(", ")}
+              <LocationCityIcon color="primary"/> Capital: {selectedCountry.capital && selectedCountry.capital.join(", ")}
             </Typography>
             <Typography variant="body1" align="center" style={{
               display: "inline-flex", 
@@ -87,13 +89,23 @@ const CountryDetail = () => {
               justifyContent: "center",
               width: "100%" 
             }}>
-              <PeopleIcon/> Population: {selectedCountry.population.toLocaleString()}
+              <PeopleIcon color="primary"/> Population: {selectedCountry.population.toLocaleString()}
             </Typography>
-            <Typography variant="body1" align="center">
-              Area: {selectedCountry.area.toLocaleString()} km²
+            <Typography variant="body1" align="center" style={{
+              display: "inline-flex", 
+              alignItems: "center", 
+              justifyContent: "center",
+              width: "100%" 
+            }}>
+              <CropFreeIcon color="primary"/> Area: {selectedCountry.area.toLocaleString()} km²
             </Typography>
-            <Typography variant="body1" align="center">
-              Languages: {selectedCountry.languages ? Object.values(selectedCountry.languages).join(", ") : "N/A"}
+            <Typography variant="body1" align="center" style={{
+              display: "inline-flex", 
+              alignItems: "center", 
+              justifyContent: "center",
+              width: "100%" 
+            }}>
+              <TranslateIcon color="primary"/> Languages: {selectedCountry.languages ? Object.values(selectedCountry.languages).join(", ") : "N/A"}
             </Typography>
           </>
         ) : (

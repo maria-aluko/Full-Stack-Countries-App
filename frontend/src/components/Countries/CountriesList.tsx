@@ -93,7 +93,7 @@ const CountriesList = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           sx={{ width: '100%' }}
           InputLabelProps={{
-            shrink: searchTerm.length > 0, // Shrink the label when there's input
+            shrink: searchTerm.length > 0,
           }}
         />
         </Box>

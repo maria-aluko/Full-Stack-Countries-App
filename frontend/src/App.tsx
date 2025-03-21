@@ -52,7 +52,7 @@ function App() {
               <Route path="/countries" element={<CountriesList />} />
               <Route path="/countries/:name" element={<CountryDetail />} />
               <Route path="/about" element={<AboutPage />} />
-              {/* Other routes... */}
+
             </Routes>
           </Box>
           <Footer />

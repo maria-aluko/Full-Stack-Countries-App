@@ -1,5 +1,5 @@
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 const geoUrl = "/custom.geo.json";
 
