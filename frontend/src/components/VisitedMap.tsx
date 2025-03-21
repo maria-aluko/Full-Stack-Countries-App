@@ -9,9 +9,9 @@ type VisitedMapProps = {
 
 const VisitedMap = ({ visitedCountries }: VisitedMapProps) => {
   return (
-    <Box sx={{ mt: 5 }}>
+    <Box>
       <ComposableMap
-        projectionConfig={{ scale: 160 }}
+        projectionConfig={{ scale: 130 }}
         style={{ width: "100%", height: "auto" }}
       >
         <Geographies geography={geoUrl}>

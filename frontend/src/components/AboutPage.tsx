@@ -32,7 +32,7 @@ const AboutPage = () => {
       </Typography>
       
       <Typography  margin="0 auto" maxWidth='600px' marginBottom='30px' lineHeight='1.8'>
-        You can also add countries to your favorites list to keep track of the ones you are most interested in and quickly access them anytime. Please log in to see your favorites.
+        You can add countries to your favorites list to keep track of the ones you are most interested in and quickly access them anytime. You can mark visited countries and see them on the world map with information about how much of the world you have visited. Please log in to see your favorites.
       </Typography>
       
       <Button

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchAllCountries, selectAllCountries, selectLoading } from '../../store/slices/countriesSlice';
+import { useAuth } from "../../context/AuthContext";
 import { Box, Button, CircularProgress, InputLabel, MenuItem, Select, SelectChangeEvent, TextField, Typography, Pagination } from '@mui/material';
 import CountryCard from './CountryCard';
 import { Country } from '../../types/country';
 
 const CountriesList = () => {
   const dispatch = useAppDispatch();
+  const { user } = useAuth();
   const countries: Country[] = useAppSelector(selectAllCountries);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
@@ -68,6 +70,10 @@ const CountriesList = () => {
     <Box>
       <Typography variant="h4" component="h1" align="center" sx={{ mb: 2 }}>
         Countries of the World
+        {!user && (
+          <Typography variant="body2" align="center" sx={{ fontStyle:"italic", color:"grey", mb: 2 }}>
+          Log in to mark countries as visited and/or as favorite
+          </Typography>)}
       </Typography>
 
       <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3, flexWrap: 'wrap', gap: 2, alignItems: 'center' }}>

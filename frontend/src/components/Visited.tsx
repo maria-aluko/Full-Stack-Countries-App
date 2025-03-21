@@ -93,7 +93,7 @@ if(loading) {
 }
 
 return (
-    <Box sx={{ p: 3 }}>
+    <Box sx={{ pt: 3 }}>
       <Typography variant="h4" textAlign="center" marginBottom="10" gutterBottom>
         Countries I've Visited
       </Typography>

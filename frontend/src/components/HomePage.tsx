@@ -2,9 +2,11 @@ import { Box, Button, CardMedia, Container, Grid, Typography } from "@mui/materi
 import { Link } from "react-router-dom";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useContext } from "react";
+import { useAuth } from "../context/AuthContext";
 import { ThemeContext } from "../theme/themeContext";
 
 const HomePage = () => {
+  const { user } = useAuth();
   const themeContext = useContext(ThemeContext);
   
     if (!themeContext) {
@@ -42,7 +44,7 @@ const HomePage = () => {
                     maxWidth: 'md',
                   }}
                 >
-                  Discover details about every country worldwide – from capitals to regions, along with up-to-date weather conditions!
+                  Discover details about every country worldwide – from capitals to regions, along with up-to-date weather conditions! Login to access your favorites list and see a map of your visited countires.
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
                   <Button
@@ -56,8 +58,23 @@ const HomePage = () => {
                       color: 'white',
                     }}
                   >
-                    Explore Now <ArrowForwardIcon />
+                    Explore Now
                   </Button>
+                  
+                  {!user && (<Button
+                    component={Link}
+                    to="/login"
+                    color="primary"
+                    variant="contained"
+                    sx={{
+                      p: 2,
+                      backgroundColor: theme === 'light' ? 'primary.main' : 'secondary.main',
+                      color: 'white',
+                    }}
+                  >
+                    Log In <ArrowForwardIcon />
+                  </Button>) }
+                  
                   <Button
                     component={Link}
                     to="/about"
