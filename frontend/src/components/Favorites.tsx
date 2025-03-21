@@ -83,7 +83,7 @@ return (
   <Box sx={{p:3}}>
     <Button
       color="primary"
-      variant="contained"
+      variant="outlined"
       onClick={() => navigate('/countries')}
     >
       <ArrowBack/> All Countries

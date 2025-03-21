@@ -12,7 +12,8 @@ const VisitedMap = ({ visitedCountries }: VisitedMapProps) => {
     <Box>
       <ComposableMap
         projectionConfig={{ scale: 130 }}
-        style={{ width: "100%", height: "auto" }}
+        style={{ width: "100%", height: "auto", overflow: "hidden" }}
+        viewBox="0 100 800 400"
       >
         <Geographies geography={geoUrl}>
           {({ geographies }) =>

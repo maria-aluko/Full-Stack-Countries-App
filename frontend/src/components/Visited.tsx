@@ -94,7 +94,7 @@ if(loading) {
 
 return (
     <Box sx={{ pt: 3 }}>
-      <Typography variant="h4" textAlign="center" marginBottom="10" gutterBottom>
+      <Typography variant="h4" textAlign="center" marginTop="40px" gutterBottom>
         Countries I've Visited
       </Typography>
 
@@ -104,7 +104,7 @@ return (
         </Typography>
       )}
 
-      <Typography variant="subtitle1" textAlign="center" gutterBottom>
+      <Typography variant="subtitle1" textAlign="center">
         You have visited {visited.length} out of {totalCountries} countries ({percentVisited}%)
       </Typography>
 

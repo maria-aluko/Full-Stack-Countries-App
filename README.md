@@ -4,18 +4,14 @@ A full-stack application with NestJS backend and React frontend.
 
 ## Technologies used
 
-Built with:
-
 - React
 - TypeScript
 - Vite
+- MUI
+- React Simple Maps
 - React Redux Toolkit
 - NestJS
 - Supabase
-
-## Setup and usage
-
-Live page [here](https://github.com/margittennosaar/markdown_study_materials)
 
 ## Authors and acknowledgment
 
