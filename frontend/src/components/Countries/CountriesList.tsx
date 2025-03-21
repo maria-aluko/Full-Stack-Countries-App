@@ -71,18 +71,25 @@ const CountriesList = () => {
       </Typography>
 
       <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3, flexWrap: 'wrap', gap: 2, alignItems: 'center' }}>
-        <Box sx={{ width: { xs: '100%', sm: 500 }, maxWidth: 700 }}>
-          <InputLabel htmlFor="search-bar" sx={{ display: 'block' }}>
-            Search
-          </InputLabel>
-          <TextField
-            label="Search by country name"
-            id="search-bar"
-            variant="outlined"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            sx={{ width: '100%' }}
-          />
+      <Box sx={{ width: { xs: '100%', sm: 500 }, maxWidth: 700 }}>
+        <InputLabel 
+          htmlFor="search-bar" 
+          sx={{ display: 'block', visibility: searchTerm ? 'hidden' : 'visible' }} 
+        >
+          Search
+        </InputLabel>
+        
+        <TextField
+          label="Search by country name"
+          id="search-bar"
+          variant="outlined"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          sx={{ width: '100%' }}
+          InputLabelProps={{
+            shrink: searchTerm.length > 0, // Shrink the label when there's input
+          }}
+        />
         </Box>
 
         <Box sx={{ width: { xs: '100%', sm: 'auto' }, minWidth: 200 }}>

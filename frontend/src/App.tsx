@@ -13,7 +13,6 @@ import Favorites from "./components/Favorites";
 import HomePage from "./components/HomePage";
 import AboutPage from "./components/AboutPage";
 import Footer from "./components/Footer";
-import VisitedCountriesPage from "./components/VisitedCountiresPage";
 
 function App() {
   return (
@@ -53,7 +52,6 @@ function App() {
               <Route path="/countries" element={<CountriesList />} />
               <Route path="/countries/:name" element={<CountryDetail />} />
               <Route path="/about" element={<AboutPage />} />
-              <Route path="/visited" element={<VisitedCountriesPage />} />
               {/* Other routes... */}
             </Routes>
           </Box>

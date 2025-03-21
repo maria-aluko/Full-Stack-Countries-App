@@ -8,6 +8,7 @@ import { Alert, Box, Button, CircularProgress, Grid, Typography } from "@mui/mat
 import CountryCard from "./Countries/CountryCard";
 import { useNavigate } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
+import Visited from "./Visited";
 
 const Favorites = () => {
   const { user } = useAuth();
@@ -110,6 +111,7 @@ return (
         }
       </Grid>)
     }
+    <Visited />
   </Box>
 )
 
