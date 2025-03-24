@@ -6,8 +6,12 @@ A full-stack web application that displays information about countries and the w
 
 - Country details for each country including weather
 - Favorites and visited functionality to save countries
+- Search, filter by region, and sort by population functionality
+- Pagination
+- Landing and About pages
 - Interactive map that displays countries the user has visited
 - Modern UI with Material-UI components
+- Light and dark theme
 - Full-stack architecture with NestJS API and Supabase
 - State management via Redux Toolkit
 
