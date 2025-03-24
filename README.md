@@ -1,19 +1,22 @@
 # Countries Fullstack
 
-A full-stack application with NestJS backend and React frontend.
+A full-stack web application that displays information about countries and the weather in each country and allows users to interact with a world map. It uses a React frontend and a NestJS backend, with Supabase integration for data management.
+
+## Features
+
+- Country details for each country including weather
+- Favorites and visited functionality to save countries
+- Interactive map that displays countries the user has visited
+- Modern UI with Material-UI components
+- Full-stack architecture with NestJS API and Supabase
+- State management via Redux Toolkit
 
 ## Technologies used
 
-- React
-- TypeScript
-- Vite
-- MUI
-- React Simple Maps
-- React Redux Toolkit
-- NestJS
-- Supabase
+- Frontend: React, TypeScript, Vite, Material-UI, React Simple Maps, Redux Toolkit
+- Backend: NestJS, Supabase
 
-## Authors and acknowledgment
+## Authors
 
 Maria Aluko
 
@@ -49,4 +52,11 @@ npm run install:all
 
 ```bash
 npm install --save react-simple-maps
+```
+
+3. Run the application
+
+```bash
+cd Countries-FullStack-React24S
+npm run dev
 ```
